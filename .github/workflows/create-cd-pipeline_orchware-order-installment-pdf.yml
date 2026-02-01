@@ -6,7 +6,7 @@ name: Build and deploy dotnet core app to Azure Function App - orchware-order-in
 on:
   push:
     branches:
-      - create-cd-pipeline
+      - master
   workflow_dispatch:
 
 env:
@@ -50,4 +50,5 @@ jobs:
           app-name: 'orchware-order-installment-pdf'
           slot-name: 'Production'
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+
           
