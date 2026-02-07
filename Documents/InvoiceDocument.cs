@@ -10,10 +10,7 @@ public class InvoiceDocument : IDocument
 {
 	private readonly Order _order;
 
-	public InvoiceDocument(Order order)
-	{
-		_order = order;
-	}
+	public InvoiceDocument(Order order) =>_order = order;
 
 	public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
 
