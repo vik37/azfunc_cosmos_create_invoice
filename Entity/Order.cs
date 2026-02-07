@@ -32,8 +32,8 @@ public class Order
 	[JsonProperty("totalAmount")]
 	public decimal TotalAmount { get; set; }
 
-	[JsonProperty("url")]
-	public string? URL { get; set; }
+	[JsonProperty("invoice")]
+	public InvoiceInfo? Invoice { get; set; }
 }
 
 public class Buyer
@@ -93,4 +93,16 @@ public class Installment
 	public DateTime DueDate { get; set; }
 	public decimal Amount { get; set; }
 	public string InstallmentCode { get; set; } = string.Empty;
+}
+
+public class InvoiceInfo
+{
+	[JsonProperty("pdfGenerated")]
+	public bool PdfGenerated { get; set; }
+
+	[JsonProperty("pdfUrl")]
+	public string? PdfUrl { get; set; }
+
+	[JsonProperty("generatedAt")]
+	public DateTime? GeneratedAt { get; set; }
 }
