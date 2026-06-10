@@ -1,5 +1,4 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace azfunc_cosmos_create_invoice.Entity;
 
@@ -34,6 +33,9 @@ public class Order
 
 	[JsonProperty("invoice")]
 	public InvoiceInfo? Invoice { get; set; }
+
+	[JsonProperty("environment")]
+	public string Environment { get; set; } = "Development";
 }
 
 public class Buyer

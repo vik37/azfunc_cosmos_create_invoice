@@ -33,6 +33,8 @@ public class CreateInvoicePDF_Func
 		LeaseContainerName = "leases",
 		CreateLeaseContainerIfNotExists = true)] IReadOnlyList<Order> orders)
 	{
+		_logger.LogInformation("Invoice PDF generated start to proccess");
+
 		var watch = new Stopwatch();
 		watch.Start();
 		if (orders == null || orders.Count == 0)
@@ -44,15 +46,15 @@ public class CreateInvoicePDF_Func
 				.GetDatabase("orchwaredb")
 				.GetContainer("order");
 
-			var blobContainer =
-				_blobServiceClient.GetBlobContainerClient("orchware");
-
-			await blobContainer.CreateIfNotExistsAsync();
-
 			foreach (var order in orders)
 			{
 				if (order.Invoice is not null && order.Invoice.PdfGenerated)
 					continue;
+
+				string containerName = (order.Environment == "Production") ? "orchware-prod" : "orchware";
+
+				var blobContainer = _blobServiceClient.GetBlobContainerClient(containerName);
+				await blobContainer.CreateIfNotExistsAsync();
 
 				await CreateOrderInvoiceFile(order, blobContainer, container);
 
@@ -67,7 +69,7 @@ public class CreateInvoicePDF_Func
 		}
 
 		watch.Stop();
-		_logger.LogInformation("The entire operation to create and save the PDF invoice takes {MiliSeconds} seconds.", watch.ElapsedMilliseconds);
+		_logger.LogInformation("The entire operation to create and save the PDF invoice takes {MiliSeconds} ms.", watch.ElapsedMilliseconds);
 	}
 
 	private async Task CreateOrderInvoiceFile(Order order, BlobContainerClient? blobContainer, Container container)
