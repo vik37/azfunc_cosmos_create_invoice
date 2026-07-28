@@ -313,11 +313,11 @@ public class InvoiceDocument : IDocument
 				{
 					section.Item().Text("Payment confirmation").SemiBold().FontSize(14);
 
-					section.Item().PaddingTop(10).Text("Authorized signature: __________________________").FontSize(12).Italic();
-					section.Item().PaddingTop(5).Text("Name and surname: ________________________________________________").FontSize(12).Italic();
-					section.Item().PaddingTop(5).Text("Bank representative's signature: ______________________________________________").FontSize(12).Italic();
-					section.Item().PaddingTop(5).Text("Official bank stamp: _______________________________________________").FontSize(12).Italic();
-					section.Item().PaddingTop(5).Text("Date of payment: ______________________________________________").FontSize(12).Italic();
+					//section.Item().PaddingTop(10).Text("Authorized signature: __________________________").FontSize(12).Italic();
+					//section.Item().PaddingTop(5).Text("Name and surname: ________________________________________________").FontSize(12).Italic();
+					//section.Item().PaddingTop(5).Text("Bank representative's signature: ______________________________________________").FontSize(12).Italic();
+					//section.Item().PaddingTop(5).Text("Official bank stamp: _______________________________________________").FontSize(12).Italic();
+					//section.Item().PaddingTop(5).Text("Date of payment: ______________________________________________").FontSize(12).Italic();
 				});
 			});
 
