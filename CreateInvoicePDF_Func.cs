@@ -78,8 +78,8 @@ public class CreateInvoicePDF_Func
 				? "receipts"
 				: $"invoices";
 
-		string fileName = $"invoice_{order.OrderNumber.Replace("#", "")}{(order.PaymentInfo.WillBePaidInFull ? "" 
-							: $"_0{order.PaymentInfo.Installments?.InstallmentNumber ?? 01}")}.pdf";
+		string fileName = $"invoice_{order.OrderNumber.Replace("#", "")}{(order.PaymentInfo.WillBePaidInFull ? ""
+					: $"_{(order.PaymentInfo.Installments?.InstallmentNumber ?? 1):D2}")}.pdf";
 
 		if (blobContainer is null) return;
 
